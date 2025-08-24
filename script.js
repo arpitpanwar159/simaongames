@@ -4,14 +4,9 @@ let started=false;
 let level=0;
 let boxs=["orange","green","purple","red"]
 let h3=document.querySelector("h3");
-document.addEventListener("keypress",function(){
-  if(started==false){
-     console.log("game is started");
-     started=true;
-     levelUp();
-  }
- 
-});
+document.addEventListener("keypress",startgame);
+document.addEventListener("click", startgame);
+document.addEventListener("touchstart", startgame);
 function boxflash(box){
   box.classList.add("flash");
   setTimeout(function(){
@@ -66,9 +61,18 @@ let allboxes=document.querySelectorAll(".box");
 for(box of allboxes){
   box.addEventListener("click",boxpress);
 }
+function startgame(){
+  if(started==false){
+     console.log("game is started");
+     started=true;
+     levelUp();
+  }
+ 
+}
 function resat(){
   started=false;
   gameSeq=[];
   userSeq=[];
   level=[];
+
 }
